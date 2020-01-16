@@ -8,6 +8,26 @@
     <title>Document</title>
 </head>
 <body>
-    <p>Hello, {{some}}</p>
+<div>
+    <form method="post">
+        <input type="text" name="text" placeholder="Enter message">
+        <input type="text" name="tag" placeholder="Enter tag">
+        <button type="submit">Add</button>
+    </form>
+</div>
+<div>
+    <form method="post" action="filter">
+        <input type="text" name="filter" placeholder="Enter filter">
+        <button type="submit">Find</button>
+    </form>
+</div>
+    <p>Messages List</p>
+    {{#messages}}
+        <div>
+            <b>{{id}}</b>
+            <span>{{text}}</span>
+            <i>{{tag}}</i>
+        </div>
+    {{/messages}}
 </body>
 </html>
