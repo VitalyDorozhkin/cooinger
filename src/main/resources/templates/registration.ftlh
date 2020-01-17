@@ -3,6 +3,6 @@
 
 <@c.page>
 Registration page
-${message}
+${message?if_exists}
 <@l.login "/registration"/>
 </@c.page>
