@@ -14,6 +14,7 @@
 
     <link rel="stylesheet" href="static/style.css">
     <title>Document</title>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 <body>
     <#include "navbar.ftlh">

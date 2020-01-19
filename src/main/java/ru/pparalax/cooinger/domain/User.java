@@ -23,9 +23,6 @@ public class User implements UserDetails {
     @Length(min = 4, message = "Password too short (less then 4)")
     private String password;
 
-    @Transient
-    private String passwordConfirm;
-
     private boolean active;
 
     @NotBlank(message = "Email can`t be blank")
@@ -121,11 +118,4 @@ public class User implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() { return getRoles(); }
 
-    public String getPasswordConfirm() {
-        return passwordConfirm;
-    }
-
-    public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
-    }
 }
