@@ -3,6 +3,6 @@
 
 <@c.page>
 Registration page
-${message!}
+${usernameError!}
 <@l.login "/registration" true/>
 </@c.page>

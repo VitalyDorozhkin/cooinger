@@ -1,9 +1,12 @@
 package ru.pparalax.cooinger.domain;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.util.Collection;
 import java.util.Set;
 
@@ -13,11 +16,20 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Length(min = 3, message = "Username too short (less then 3)")
     private String username;
+
+    @Length(min = 4, message = "Password too short (less then 4)")
     private String password;
+
+    @Transient
+    private String passwordConfirm;
+
     private boolean active;
 
-
+    @NotBlank(message = "Email can`t be blank")
+    @Email(message = "Email should be formated like 'email.google.com'")
     private String email;
     private String activationCode;
 
@@ -108,4 +120,12 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() { return getRoles(); }
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
+    }
 }

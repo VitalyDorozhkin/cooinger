@@ -10,14 +10,26 @@
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
         Add new message
     </button>
-    <div class="collapse" id="collapseExample">
+    <div class="collapse <#if textError??>show</#if>" id="collapseExample">
         <div class="form-group mt-3">
             <form method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <textarea name="text" placeholder="Enter message" class="form-control" id="text"></textarea>
+                    <textarea name="text" placeholder="Enter message" class="form-control ${(textError??)?string('is-invalid', '')}" id="text">
+                        <#if message??>${message.text}</#if>
+                    </textarea>
+                    <#if  textError??>
+                     <div class="invalid-feedback">
+                         ${textError}
+                     </div>
+                    </#if>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="tag" placeholder="Enter tag" class="form-control" id="tag">
+                    <input type="text" name="tag" placeholder="Enter tag" class="form-control ${(tagError??)?string('is-invalid', '')}" id="tag" value="<#if message??>${message.tag}</#if>">
+                    <#if  tagError??>
+                        <div class="invalid-feedback">
+                            ${tagError}
+                        </div>
+                    </#if>
                 </div>
                 <div class="custom-file form-group">
                     <input type="file" name="file" class="custom-file-input" id="customFile">
