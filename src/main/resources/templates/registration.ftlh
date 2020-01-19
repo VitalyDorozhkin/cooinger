@@ -4,5 +4,5 @@
 <@c.page>
 Registration page
 ${message!}
-<@l.login "/registration"/>
+<@l.login "/registration" true/>
 </@c.page>
